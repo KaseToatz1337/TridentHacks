@@ -17,7 +17,7 @@ public class TridentItemMixin {
     @Inject(method="onStoppedUsing", at=@At("HEAD"))
     private void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks, CallbackInfo ci)
     {
-        if (user == RiptideHacks.client.player && user.getItemUseTime() > 10)
+        if (RiptideHacks.toggled && user == RiptideHacks.client.player && user.getItemUseTime() > 10)
         {
             world.playSoundFromEntity(user, SoundEvents.ITEM_TRIDENT_RIPTIDE_3.value(), SoundCategory.AMBIENT, 1.f, 1.f);
             RiptideHacks.setLastTridentUse();

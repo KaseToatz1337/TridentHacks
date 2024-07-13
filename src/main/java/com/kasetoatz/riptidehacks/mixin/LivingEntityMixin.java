@@ -13,9 +13,12 @@ public abstract class LivingEntityMixin {
     private void isUsingRiptide(CallbackInfoReturnable<Boolean> cir)
     {
         LivingEntity entity = (LivingEntity)(Object)this;
-        if (RiptideHacks.shouldAnimate() && entity == RiptideHacks.client.player)
+        if (RiptideHacks.toggled && RiptideHacks.shouldAnimate())
         {
-            cir.setReturnValue(true);
+             if (entity == RiptideHacks.client.player)
+             {
+                 cir.setReturnValue(true);
+             }
         }
     }
 }

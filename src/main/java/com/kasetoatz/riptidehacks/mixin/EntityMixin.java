@@ -12,9 +12,12 @@ public abstract class EntityMixin {
     @Inject(method="isTouchingWaterOrRain", at=@At("HEAD"), cancellable = true)
     private void isTouchingWaterOrRain(CallbackInfoReturnable<Boolean> cir)
     {
-        if (((Entity)(Object)this) == RiptideHacks.client.player)
+        if (RiptideHacks.toggled)
         {
-            cir.setReturnValue(true);
+            if (((Entity)(Object)this) == RiptideHacks.client.player)
+            {
+                cir.setReturnValue(true);
+            }
         }
     }
 }
