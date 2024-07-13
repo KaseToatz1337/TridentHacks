@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.kasetoatz.riptidehacks.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [],
+  "client": [
+    "EnchantmentHelperMixin",
+    "EntityMixin",
+    "LivingEntityMixin",
+    "TridentItemMixin",
+    "ClientConnectionMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
