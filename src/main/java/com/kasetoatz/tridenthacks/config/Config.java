@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.Gson;
 import com.kasetoatz.tridenthacks.TridentHacks;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.crash.CrashException;
 import net.minecraft.util.crash.CrashReport;
 
@@ -19,8 +20,10 @@ public class Config {
     public static String riptideOnMessage = "Riptide §aON";
     public static String riptideOffMessage = "Riptide §cOFF";
 
+    private static final File file = new File(MinecraftClient.getInstance().runDirectory, "config/tridenthacks.json");
+    private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
     public static void load() {
-        File file = new File(TridentHacks.client.runDirectory, "config/tridenthacks.json");
         if (!file.exists())
         {
             save();
@@ -28,7 +31,6 @@ public class Config {
         }
         try (FileReader reader = new FileReader(file))
         {
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
             JsonObject json = gson.fromJson(reader, JsonObject.class);
             if (json.has("toggleRiptide"))
             {
@@ -50,6 +52,7 @@ public class Config {
             {
                 riptideOffMessage = json.get("riptideOffMessage").getAsString();
             }
+            save();
         }
         catch (IOException exc)
         {
@@ -67,7 +70,7 @@ public class Config {
         json.addProperty("riptideOffMessage", riptideOffMessage);
         try (FileWriter writer = new FileWriter(new File(TridentHacks.client.runDirectory, "config/tridenthacks.json")))
         {
-            new GsonBuilder().setPrettyPrinting().create().toJson(json, writer);
+            gson.toJson(json, writer);
         }
         catch (IOException exc)
         {

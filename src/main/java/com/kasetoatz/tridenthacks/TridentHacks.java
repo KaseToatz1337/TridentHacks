@@ -25,8 +25,8 @@ public class TridentHacks implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        client = MinecraftClient.getInstance();
         Config.load();
+        client = MinecraftClient.getInstance();
         keyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding("Toggle Riptide", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_RIGHT_ALT, "RiptideHacks"));
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (keyBinding.wasPressed()) {
