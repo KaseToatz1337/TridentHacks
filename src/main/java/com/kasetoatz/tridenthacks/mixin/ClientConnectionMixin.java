@@ -3,6 +3,7 @@ package com.kasetoatz.tridenthacks.mixin;
 import com.kasetoatz.tridenthacks.config.Config;
 import com.kasetoatz.tridenthacks.TridentHacks;
 import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.item.Items;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.c2s.play.PlayerActionC2SPacket;
@@ -22,7 +23,7 @@ public abstract class ClientConnectionMixin {
             ClientPlayerEntity player = TridentHacks.client.player;
             if (player != null)
             {
-                if (packet instanceof PlayerActionC2SPacket && TridentHacks.noNormalRiptide() && ((PlayerActionC2SPacket)packet).getAction() == PlayerActionC2SPacket.Action.RELEASE_USE_ITEM)
+                if (player.getActiveItem().getItem() == Items.TRIDENT && player.isUsingItem() && packet instanceof PlayerActionC2SPacket && TridentHacks.noNormalRiptide() && ((PlayerActionC2SPacket)packet).getAction() == PlayerActionC2SPacket.Action.RELEASE_USE_ITEM)
                 {
                     ci.cancel();
                 }

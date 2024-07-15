@@ -25,12 +25,15 @@ public class TridentItemMixin {
         if (Config.toggleRiptide)
         {
             PlayerEntity player = TridentHacks.client.player;
-            if (TridentHacks.noNormalRiptide() && user == player && user.getItemUseTime() > 10)
+            if (user == player && user.getItemUseTime() > 10)
             {
-                world.playSoundFromEntity(player, SoundEvents.ITEM_TRIDENT_RIPTIDE_3.value(), SoundCategory.PLAYERS, 1.F, 1.F);
+                if (TridentHacks.noNormalRiptide())
+                {
+                    world.playSoundFromEntity(player, SoundEvents.ITEM_TRIDENT_RIPTIDE_3.value(), SoundCategory.PLAYERS, 1.F, 1.F);
+                    TridentHacks.lastTridentUse = System.currentTimeMillis();
+                }
+                TridentHacks.onGround = false;
             }
-            TridentHacks.lastTridentUse = System.currentTimeMillis();
-            TridentHacks.onGround = false;
         }
         else if (Config.returnToSameSlot && !TridentHacks.hasRiptide)
         {
