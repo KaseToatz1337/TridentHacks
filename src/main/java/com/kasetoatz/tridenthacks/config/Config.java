@@ -68,7 +68,7 @@ public class Config {
         json.addProperty("returnToSameSlot", returnToSameSlot);
         json.addProperty("riptideOnMessage", riptideOnMessage);
         json.addProperty("riptideOffMessage", riptideOffMessage);
-        try (FileWriter writer = new FileWriter(new File(TridentHacks.client.runDirectory, "config/tridenthacks.json")))
+        try (FileWriter writer = new FileWriter(file))
         {
             gson.toJson(json, writer);
         }
