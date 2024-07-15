@@ -1,6 +1,7 @@
-package com.kasetoatz.riptidehacks.mixin;
+package com.kasetoatz.tridenthacks.mixin;
 
-import com.kasetoatz.riptidehacks.RiptideHacks;
+import com.kasetoatz.tridenthacks.config.Config;
+import com.kasetoatz.tridenthacks.TridentHacks;
 import net.minecraft.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -13,9 +14,9 @@ public abstract class LivingEntityMixin {
     private void isUsingRiptide(CallbackInfoReturnable<Boolean> cir)
     {
         LivingEntity entity = (LivingEntity)(Object)this;
-        if (RiptideHacks.toggled && RiptideHacks.shouldAnimate())
+        if (Config.toggleRiptide && TridentHacks.noNormalRiptide() && TridentHacks.lastTridentUse > System.currentTimeMillis() - 1000)
         {
-             if (entity == RiptideHacks.client.player)
+             if (entity == TridentHacks.client.player)
              {
                  cir.setReturnValue(true);
              }

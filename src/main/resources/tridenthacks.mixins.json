@@ -1,16 +1,17 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.kasetoatz.riptidehacks.mixin",
+  "package": "com.kasetoatz.tridenthacks.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [],
   "client": [
+    "ClientConnectionMixin",
     "EnchantmentHelperMixin",
     "EntityMixin",
     "LivingEntityMixin",
+    "PlayerInventoryMixin",
     "PlayerMoveC2SPacketMixin",
-    "TridentItemMixin",
-    "ClientConnectionMixin"
+    "TridentItemMixin"
   ],
   "injectors": {
     "defaultRequire": 1

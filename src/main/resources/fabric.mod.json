@@ -1,23 +1,23 @@
 {
   "schemaVersion": 1,
-  "id": "riptidehacks",
+  "id": "tridenthacks",
   "version": "${version}",
   "name": "RiptideHacks",
   "description": "",
   "authors": [],
   "contact": {
-    "repo": "https://github.com/KaseToatz1337/RiptideHacks"
+    "repo": "https://github.com/KaseToatz1337/TridentHacks"
   },
   "license": "MIT",
   "environment": "*",
   "entrypoints": {
     "client": [
-      "com.kasetoatz.riptidehacks.RiptideHacks"
+      "com.kasetoatz.tridenthacks.TridentHacks"
     ],
     "main": []
   },
   "mixins": [
-    "riptidehacks.mixins.json"
+    "tridenthacks.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",
