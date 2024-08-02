@@ -6,7 +6,7 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.item.Items;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.c2s.play.PlayerActionC2SPacket;
+import net.minecraft.network.packet.c2s.play.PlayerInteractItemC2SPacket;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -23,7 +23,7 @@ public abstract class ClientConnectionMixin {
             ClientPlayerEntity player = TridentHacks.client.player;
             if (player != null)
             {
-                if (player.getActiveItem().getItem() == Items.TRIDENT && player.isUsingItem() && packet instanceof PlayerActionC2SPacket && TridentHacks.noNormalRiptide() && ((PlayerActionC2SPacket)packet).getAction() == PlayerActionC2SPacket.Action.RELEASE_USE_ITEM)
+                if (packet instanceof PlayerInteractItemC2SPacket && player.getStackInHand(((PlayerInteractItemC2SPacket)packet).getHand()).getItem() == Items.TRIDENT && TridentHacks.noNormalRiptide())
                 {
                     ci.cancel();
                 }

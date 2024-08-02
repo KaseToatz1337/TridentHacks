@@ -7,12 +7,9 @@ import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
-import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.Items;
 import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
-
-import java.util.HashMap;
 
 public class TridentHacks implements ClientModInitializer {
     public static MinecraftClient client;
